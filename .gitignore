@@ -24,3 +24,5 @@ hs_err_pid*
 .idea/
 ThirdTask.iml
 pom.xml
+logs/
+target/
