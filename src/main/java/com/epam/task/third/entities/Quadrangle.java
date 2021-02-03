@@ -28,8 +28,12 @@ public class Quadrangle {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Quadrangle thatQuadrangle = (Quadrangle) o;
         List<Point> thatPoints = thatQuadrangle.getPoints();
         for (int i=0; i<thatPoints.size(); i++) {

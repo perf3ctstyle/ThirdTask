@@ -12,19 +12,6 @@ public class QuadrangleLogic {
 
     private final static Logger LOGGER = LogManager.getLogger(QuadrangleLogic.class);
 
-    public double calculatePerimeter(Quadrangle quadrangle) {
-        LOGGER.info("Method calculatePerimeter for quadrangle " + quadrangle.toString() + " started.");
-        List<Line> sides = quadrangle.getSides();
-        double perimeter = 0;
-        for (int i=0; i<sides.size(); i++) {
-            Line currentSide = sides.get(i);
-            double currentSideLength = currentSide.getLength();
-            perimeter += currentSideLength;
-        }
-        LOGGER.info("Method calculatePerimeter finished. Calculated perimeter: " + perimeter);
-        return perimeter;
-    }
-
     public boolean isSquare(Quadrangle quadrangle) {
         LOGGER.info("Method isSquare for quadrangle " + quadrangle.toString() + " started.");
         List<Line> sides = quadrangle.getSides();
@@ -73,20 +60,5 @@ public class QuadrangleLogic {
         }
         LOGGER.info("Method isQuadrangle finished. Result: true");
         return true;
-    }
-
-    public double calculateArea(Quadrangle quadrangle) {
-        LOGGER.info("Method calculateArea for quadrangle " + quadrangle.toString() + " started.");
-        double area = 1;
-        double halfPerimeter = calculatePerimeter(quadrangle) / 2;
-        List<Line> quadrangleSides = quadrangle.getSides();
-        for (int i=0; i<quadrangleSides.size(); i++) {
-            Line currentSide = quadrangleSides.get(i);
-            double currentSideLength = currentSide.getLength();
-            area *= halfPerimeter - currentSideLength;
-        }
-        area = Math.sqrt(area);
-        LOGGER.info("Method calculateArea finished. Calculated area: " + area);
-        return area;
     }
 }

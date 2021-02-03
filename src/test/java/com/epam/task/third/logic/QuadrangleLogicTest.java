@@ -14,21 +14,6 @@ public class QuadrangleLogicTest {
     private static final QuadrangleLogic quadrangleLogic = new QuadrangleLogic();
 
     @Test
-    public void testShouldCalculatePerimeter() {
-        Point firstPoint = new Point(2.0, 1.0);
-        Point secondPoint = new Point(1.0, 2.0);
-        Point thirdPoint = new Point(2.0, 3.0);
-        Point fourthPoint = new Point(4.0, 3.0);
-        List<Point> points = new ArrayList(Arrays.asList(firstPoint, secondPoint, thirdPoint, fourthPoint));
-        Quadrangle quadrangle = new Quadrangle(points);
-        double expectedPerimeter = 7.6568;
-
-        double actualPerimeter = quadrangleLogic.calculatePerimeter(quadrangle);
-
-        Assert.assertEquals(expectedPerimeter, actualPerimeter, 0.001);
-    }
-
-    @Test
     public void testPositiveShouldCheckIfQuadrangleIsSquare() {
         Point firstPoint = new Point(2.0, 1.0);
         Point secondPoint = new Point(2.0, 3.0);
@@ -110,20 +95,5 @@ public class QuadrangleLogicTest {
         boolean result = quadrangleLogic.isQuadrangle(quadrangle);
 
         Assert.assertTrue(result);
-    }
-
-    @Test
-    public void testShouldCalculateArea() {
-        Point firstPoint = new Point(2.0, 1.0);
-        Point secondPoint = new Point(2.0, 3.0);
-        Point thirdPoint = new Point(4.0, 3.0);
-        Point fourthPoint = new Point(4.0, 1.0);
-        List<Point> points = new ArrayList(Arrays.asList(firstPoint, secondPoint, thirdPoint, fourthPoint));
-        Quadrangle quadrangle = new Quadrangle(points);
-        double expectedArea = 4;
-
-        double actualArea = quadrangleLogic.calculateArea(quadrangle);
-
-        Assert.assertEquals(expectedArea, actualArea, 0.1);
     }
 }
