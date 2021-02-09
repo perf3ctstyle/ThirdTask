@@ -1,29 +1,34 @@
 package com.epam.task.third.entities;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.epam.task.third.logic.IdGenerator;
+
 import java.util.List;
 
 public class Quadrangle {
 
-    private final List<Point> points;
-    private final List<Line> sides;
+    private List<Point> points;
+    private int id;
 
     public Quadrangle(List<Point> points) {
         this.points = points;
-        Line firstSide = new Line(points.get(0), points.get(1));
-        Line secondSide = new Line(points.get(1), points.get(2));
-        Line thirdSide = new Line(points.get(2), points.get(3));
-        Line fourthSide = new Line(points.get(3), points.get(0));
-        this.sides = new ArrayList(Arrays.asList(firstSide, secondSide, thirdSide, fourthSide));
+        IdGenerator idGenerator = new IdGenerator();
+        this.id = idGenerator.generateId();
     }
 
     public List<Point> getPoints() {
         return this.points;
     }
 
-    public List<Line> getSides() {
-        return this.sides;
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
@@ -36,7 +41,7 @@ public class Quadrangle {
         }
         Quadrangle thatQuadrangle = (Quadrangle) o;
         List<Point> thatPoints = thatQuadrangle.getPoints();
-        for (int i=0; i<thatPoints.size(); i++) {
+        for (int i = 0; i < thatPoints.size(); i++) {
             Point thatPoint = thatPoints.get(i);
             if (!points.contains(thatPoint)) {
                 return false;
@@ -50,7 +55,6 @@ public class Quadrangle {
         final int prime = 31;
         int result = 1;
         result = prime * result + points.hashCode();
-        result = prime * result + sides.hashCode();
         return result;
     }
 
@@ -58,7 +62,6 @@ public class Quadrangle {
     public String toString() {
         return "Quadrangle{" +
                 "points=" + points.toString() +
-                ", sides=" + sides.toString() +
                 '}';
     }
 }

@@ -1,6 +1,5 @@
 package com.epam.task.third.parsing;
 
-import com.epam.task.third.data.DataReader;
 import com.epam.task.third.entities.Point;
 import com.epam.task.third.entities.Quadrangle;
 import org.apache.logging.log4j.LogManager;

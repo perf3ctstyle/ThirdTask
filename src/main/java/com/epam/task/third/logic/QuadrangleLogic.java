@@ -1,6 +1,5 @@
 package com.epam.task.third.logic;
 
-import com.epam.task.third.entities.Line;
 import com.epam.task.third.entities.Point;
 import com.epam.task.third.entities.Quadrangle;
 import org.apache.logging.log4j.LogManager;
@@ -10,15 +9,17 @@ import java.util.List;
 
 public class QuadrangleLogic {
 
+    private final static SidesLengthCalculator SIDES_LENGTH_CALCULATOR = new SidesLengthCalculator();
+
     private final static Logger LOGGER = LogManager.getLogger(QuadrangleLogic.class);
 
     public boolean isSquare(Quadrangle quadrangle) {
         LOGGER.info("Method isSquare for quadrangle " + quadrangle.toString() + " started.");
-        List<Line> sides = quadrangle.getSides();
-        double sideLength = sides.get(0).getLength();
-        for (int i=0; i<sides.size(); i++) {
-            Line currentSide = sides.get(i);
-            double currentSideLength = currentSide.getLength();
+        List<Point> quadranglePoints = quadrangle.getPoints();
+        List<Double> sidesLengths = SIDES_LENGTH_CALCULATOR.calculateSidesLengths(quadranglePoints);
+        double sideLength = sidesLengths.get(0);
+        for (int i=0; i<sidesLengths.size(); i++) {
+            double currentSideLength = sidesLengths.get(i);
             if (currentSideLength != sideLength) {
                 LOGGER.info("Method isSquare finished. Result: false");
                 return false;

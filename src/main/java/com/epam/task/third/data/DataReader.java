@@ -32,7 +32,6 @@ public class DataReader {
             LOGGER.info("Method readData from a file" + this.filename + " finished. The data has been read successfully.");
             return processedLines;
         } catch (IOException e) {
-            LOGGER.error(e.getMessage(), e);
             throw new DataException("The file hasn't been found!", e, this.filename);
         } finally {
             if (reader != null) {
