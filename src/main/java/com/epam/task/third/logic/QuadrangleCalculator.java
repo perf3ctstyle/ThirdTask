@@ -9,14 +9,14 @@ import java.util.List;
 
 public class QuadrangleCalculator {
 
-    private final static SidesLengthCalculator SIDES_LENGTH_CALCULATOR = new SidesLengthCalculator();
+    private final static SidesLengthCalculator sidesLengthCalculator = new SidesLengthCalculator();
 
     private final static Logger LOGGER = LogManager.getLogger(QuadrangleCalculator.class);
 
     public double calculatePerimeter(Quadrangle quadrangle) {
         LOGGER.info("Method calculatePerimeter for quadrangle " + quadrangle.toString() + " started.");
         List<Point> quadranglePoints = quadrangle.getPoints();
-        List<Double> sidesLengths = SIDES_LENGTH_CALCULATOR.calculateSidesLengths(quadranglePoints);
+        List<Double> sidesLengths = sidesLengthCalculator.calculateSidesLengths(quadranglePoints);
         double perimeter = 0;
         for (int i = 0; i < sidesLengths.size(); i++) {
             double currentSideLength = sidesLengths.get(i);
@@ -31,7 +31,7 @@ public class QuadrangleCalculator {
         double area = 1;
         double halfPerimeter = calculatePerimeter(quadrangle) / 2;
         List<Point> quadranglePoints = quadrangle.getPoints();
-        List<Double> sidesLengths = SIDES_LENGTH_CALCULATOR.calculateSidesLengths(quadranglePoints);
+        List<Double> sidesLengths = sidesLengthCalculator.calculateSidesLengths(quadranglePoints);
         for (int i = 0; i < sidesLengths.size(); i++) {
             double currentSideLength = sidesLengths.get(i);
             area *= halfPerimeter - currentSideLength;

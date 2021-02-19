@@ -9,14 +9,14 @@ import java.util.List;
 
 public class QuadrangleLogic {
 
-    private final static SidesLengthCalculator SIDES_LENGTH_CALCULATOR = new SidesLengthCalculator();
+    private final static SidesLengthCalculator sidesLengthCalculator = new SidesLengthCalculator();
 
     private final static Logger LOGGER = LogManager.getLogger(QuadrangleLogic.class);
 
     public boolean isSquare(Quadrangle quadrangle) {
         LOGGER.info("Method isSquare for quadrangle " + quadrangle.toString() + " started.");
         List<Point> quadranglePoints = quadrangle.getPoints();
-        List<Double> sidesLengths = SIDES_LENGTH_CALCULATOR.calculateSidesLengths(quadranglePoints);
+        List<Double> sidesLengths = sidesLengthCalculator.calculateSidesLengths(quadranglePoints);
         double sideLength = sidesLengths.get(0);
         for (int i=0; i<sidesLengths.size(); i++) {
             double currentSideLength = sidesLengths.get(i);
